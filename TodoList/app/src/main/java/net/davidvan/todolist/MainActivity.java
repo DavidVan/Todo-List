@@ -16,7 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static ArrayList<String> taskList;
+    public static ArrayList<String> taskList = new ArrayList<String>();
 
     public static ArrayAdapter<String> taskAdapter;
 
@@ -34,18 +34,8 @@ public class MainActivity extends AppCompatActivity {
 //        startActivityForResult(myIntent, 0);
 //    }
     public void addTask(View view){
-        if(taskList.size() == 0){
             Intent in = new Intent(view.getContext(), AddTask.class);
             startActivityForResult(in, 0);
-        }
-        else {
-            Intent in = getIntent();
-            Bundle b = in.getExtras();
-            String tasks = b.getString("tasks");
-            taskList.add(tasks);
-            Boolean alert = b.getBoolean("alert");
-            taskAdapter.notifyDataSetChanged();
-        }
     }
 
     @Override
@@ -56,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // ListView
-        taskList = new ArrayList<String>();
         taskAdapter = new ArrayAdapter<String>(this, R.layout.tasks_list_view, R.id.list_item_task_textview, taskList);
 
         ListView tasks = (ListView) findViewById(R.id.list_view_task);
@@ -65,20 +54,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onStart() {
-//        // Add task when received from AddTask.java
-//        if(getIntent().getExtras() != null) {
-//            String task = getIntent().getExtras().getString("taskName");
-//            taskList.add(task);
-//            taskAdapter.notifyDataSetChanged();
-//        }
-//        // Doesn't work...
-//        if (getIntent().getExtras().getStringArrayList("taskList") != null) {
-//            taskList = getIntent().getExtras().getStringArrayList("taskList");
-//        }
-//        super.onStart();
-//    }
+    @Override
+    public void onStart() {
+        // Add task when received from AddTask.java
+        if(getIntent().getExtras() != null && taskList.size() == 0) {
+            String task = getIntent().getExtras().getString("tasks");
+            System.out.println(taskList.size());
+            System.out.println(task);
+            taskList.add(task);
+            taskAdapter.notifyDataSetChanged();
+        }
+        else if(getIntent().getExtras() != null) {
+            Intent in = getIntent();
+            Bundle b = in.getExtras();
+            String tasks = b.getString("tasks");
+            taskList.add(tasks);
+//            Boolean alert = b.getBoolean("alert");
+            taskAdapter.notifyDataSetChanged();
+        }
+        super.onStart();
+    }
 
     public void goBack(View view) {
 

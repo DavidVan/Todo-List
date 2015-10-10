@@ -33,14 +33,15 @@ public class AddTask extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task);
-        initTasks();
         Button next = (Button) findViewById(R.id.task_done_button);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                initTasks();
                 setValues();
                 Bundle b = new Bundle();
                 b.putString("tasks", memo2);
                 b.putBoolean("alert", setAlert);
+
                 Intent in = new Intent(AddTask.this, MainActivity.class);
                 in.putExtras(b);
                 // Get EditText text.
@@ -54,14 +55,14 @@ public class AddTask extends Activity {
     }
 
 
-    @Override
-    public void onStart() {
-//        // Add task when received from AddTask.java
-//        if(getIntent().getExtras() != null) {
-//            ArrayList<String> taskList = getIntent().getExtras().getStringArrayList("taskList");
-//            myIntent.putStringArrayListExtra("taskList", taskList);
-//        }
-        super.onStart();
-    }
+//    @Override
+//    public void onStart() {
+////        // Add task when received from AddTask.java
+////        if(getIntent().getExtras() != null) {
+////            ArrayList<String> taskList = getIntent().getExtras().getStringArrayList("taskList");
+////            myIntent.putStringArrayListExtra("taskList", taskList);
+////        }
+//        super.onStart();
+//    }
 
 }
