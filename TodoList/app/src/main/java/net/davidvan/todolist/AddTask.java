@@ -68,4 +68,28 @@ public class AddTask extends Activity {
 //        super.onStart();
 //    }
 
+    public void addAlert(View view)
+    {
+        boolean hasAlert = ((CheckBox) view).isChecked();
+
+        EditText text = (EditText) findViewById(R.id.date_time);
+
+        switch (view.getId())
+        {
+            case R.id.task_alert_button:
+                if (hasAlert)
+                {
+                    text.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    text.setVisibility(View.GONE);
+                }
+                break;
+        }
+
+
+
+    }
+
 }

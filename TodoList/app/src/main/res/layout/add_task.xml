@@ -21,7 +21,22 @@
         android:layout_height="wrap_content"
         android:text="Add Alert?"
         android:id="@+id/task_alert_button"
+        android:onClick="addAlert"
         android:layout_below="@id/task_name_text"/>
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/task_alert_button"
+        android:layout_below="@id/task_name_text"
+        android:id="@+id/date_time"
+        android:hint="Time and Date"
+        android:inputType = "datetime"
+        android:visibility="gone"
+        />
+
+
 
     <Button
         android:layout_width="wrap_content"
