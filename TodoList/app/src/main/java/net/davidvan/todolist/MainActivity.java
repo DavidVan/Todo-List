@@ -1,8 +1,7 @@
 package net.davidvan.todolist;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         taskList.add(thing);
         int place = counter++;
         taskAdapter.notifyDataSetChanged();
+        Intent myIntent = new Intent(view.getContext(), AddTask.class);
+        startActivityForResult(myIntent, 0);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
+
         // ListView
         taskList = new ArrayList<String>();
         taskAdapter = new ArrayAdapter<String>(this, R.layout.tasks_list_view, R.id.list_item_task_textview, taskList);
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         tasks.setAdapter(taskAdapter);
     }
 
+    public void goBack(View view) {
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
