@@ -11,6 +11,7 @@
         android:id="@+id/task_name_text"/>
 
     <EditText
+        android:id="@+id/task_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/task_name_text"/>

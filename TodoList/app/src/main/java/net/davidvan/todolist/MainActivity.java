@@ -9,13 +9,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static List<String> taskList;
+    public static ArrayList<String> taskList;
 
     public static ArrayAdapter<String> taskAdapter;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         int place = counter++;
         taskAdapter.notifyDataSetChanged();
         Intent myIntent = new Intent(view.getContext(), AddTask.class);
+        myIntent.putStringArrayListExtra("taskList", taskList);
         startActivityForResult(myIntent, 0);
     }
 
@@ -45,6 +47,22 @@ public class MainActivity extends AppCompatActivity {
         ListView tasks = (ListView) findViewById(R.id.list_view_task);
 
         tasks.setAdapter(taskAdapter);
+
+    }
+
+    @Override
+    public void onStart() {
+        // Add task when received from AddTask.java
+        if(getIntent().getExtras() != null) {
+            String task = getIntent().getExtras().getString("taskName");
+            taskList.add(task);
+            taskAdapter.notifyDataSetChanged();
+        }
+        // Doesn't work...
+        if (getIntent().getExtras().getStringArrayList("taskList") != null) {
+            taskList = getIntent().getExtras().getStringArrayList("taskList");
+        }
+        super.onStart();
     }
 
     public void goBack(View view) {
