@@ -23,16 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static int counter = 0;
 
 
-//    public void addTask(View view)
-//    {
-//        String thing = "Hello World";
-//        taskList.add(thing);
-//        int place = counter++;
-//        taskAdapter.notifyDataSetChanged();
-//        Intent myIntent = new Intent(view.getContext(), AddTask.class);
-//        myIntent.putStringArrayListExtra("taskList", taskList);
-//        startActivityForResult(myIntent, 0);
-//    }
     public void addTask(View view){
             Intent in = new Intent(view.getContext(), AddTask.class);
             startActivityForResult(in, 0);

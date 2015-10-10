@@ -44,13 +44,16 @@ public class AddTask extends Activity {
 
                 Intent in = new Intent(AddTask.this, MainActivity.class);
                 in.putExtras(b);
-                // Get EditText text.
-//                EditText taskName = (EditText) findViewById(R.id.task_name_edit_text);
-//                String taskNameContents = taskName.getText().toString();
-//                myIntent.putExtra("taskName", taskNameContents);
-                  startActivity(in);
+                startActivity(in);
             }
 
+        });
+        Button back = (Button) findViewById(R.id.task_back_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent in = new Intent(AddTask.this, MainActivity.class);
+                startActivityForResult(in, 0);
+            }
         });
     }
 
