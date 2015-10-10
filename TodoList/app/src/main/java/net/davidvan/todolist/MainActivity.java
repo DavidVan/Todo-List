@@ -8,6 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +22,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // ListView
+        List<String> taskList = new ArrayList<String>();
+        ArrayAdapter<String> taskAdapter = new ArrayAdapter<String>(this, R.layout.tasks_list_view, R.id.list_item_task_textview, taskList);
+
+        ListView tasks = (ListView) findViewById(R.id.list_view_task);
+
+        tasks.setAdapter(taskAdapter);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
