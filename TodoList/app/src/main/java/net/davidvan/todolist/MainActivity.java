@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
             taskAdapter.notifyDataSetChanged();
         }
         // Doesn't work...
-        if (getIntent().getExtras().getStringArrayList("taskList") != null) {
+      /*  if (getIntent().getExtras().getStringArrayList("taskList") != null) {
             taskList = getIntent().getExtras().getStringArrayList("taskList");
-        }
+        }*/
         super.onStart();
     }
 

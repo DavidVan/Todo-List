@@ -38,11 +38,11 @@ public class AddTask extends Activity {
 
     @Override
     public void onStart() {
-        // Add task when received from AddTask.java
+/*        // Add task when received from AddTask.java
         if(getIntent().getExtras() != null) {
             ArrayList<String> taskList = getIntent().getExtras().getStringArrayList("taskList");
             myIntent.putStringArrayListExtra("taskList", taskList);
-        }
+        }*/
         super.onStart();
     }
 
