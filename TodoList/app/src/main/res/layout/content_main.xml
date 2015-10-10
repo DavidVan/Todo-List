@@ -13,11 +13,11 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button_send"
+        android:id="@+id/button_add_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add"
         android:layout_alignParentBottom="true"
-        android:onClick="sendMessage"
+        android:onClick="addTask"
         style="?android:attr/borderlessButtonStyle" />
 </RelativeLayout>
