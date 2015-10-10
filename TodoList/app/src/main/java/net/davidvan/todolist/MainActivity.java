@@ -16,6 +16,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static List<String> taskList;
+
+    public static ArrayAdapter<String> taskAdapter;
+
+    public static int counter = 0;
+
+    public void addTask(View view)
+    {
+        String thing = "Hello World";
+        taskList.add(thing);
+        int place = counter++;
+        taskAdapter.notifyDataSetChanged();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // ListView
-        List<String> taskList = new ArrayList<String>();
-        ArrayAdapter<String> taskAdapter = new ArrayAdapter<String>(this, R.layout.tasks_list_view, R.id.list_item_task_textview, taskList);
+        taskList = new ArrayList<String>();
+        taskAdapter = new ArrayAdapter<String>(this, R.layout.tasks_list_view, R.id.list_item_task_textview, taskList);
 
         ListView tasks = (ListView) findViewById(R.id.list_view_task);
 
