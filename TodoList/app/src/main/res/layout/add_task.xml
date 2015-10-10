@@ -29,5 +29,12 @@
         android:text="Go Back"
         android:layout_below="@+id/task_alert_button"
         android:id="@+id/task_back_button"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:layout_below="@+id/task_alert_button"
+        android:layout_toRightOf="@id/task_back_button"
+        android:id="@+id/task_done_button"/>
 
 </RelativeLayout>
