@@ -22,15 +22,30 @@ public class MainActivity extends AppCompatActivity {
 
     public static int counter = 0;
 
-    public void addTask(View view)
-    {
-        String thing = "Hello World";
-        taskList.add(thing);
-        int place = counter++;
-        taskAdapter.notifyDataSetChanged();
-        Intent myIntent = new Intent(view.getContext(), AddTask.class);
-        myIntent.putStringArrayListExtra("taskList", taskList);
-        startActivityForResult(myIntent, 0);
+
+//    public void addTask(View view)
+//    {
+//        String thing = "Hello World";
+//        taskList.add(thing);
+//        int place = counter++;
+//        taskAdapter.notifyDataSetChanged();
+//        Intent myIntent = new Intent(view.getContext(), AddTask.class);
+//        myIntent.putStringArrayListExtra("taskList", taskList);
+//        startActivityForResult(myIntent, 0);
+//    }
+    public void addTask(View view){
+        if(taskList.size() == 0){
+            Intent in = new Intent(view.getContext(), AddTask.class);
+            startActivityForResult(in, 0);
+        }
+        else {
+            Intent in = getIntent();
+            Bundle b = in.getExtras();
+            String tasks = b.getString("tasks");
+            taskList.add(tasks);
+            Boolean alert = b.getBoolean("alert");
+            taskAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -50,20 +65,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart() {
-        // Add task when received from AddTask.java
-        if(getIntent().getExtras() != null) {
-            String task = getIntent().getExtras().getString("taskName");
-            taskList.add(task);
-            taskAdapter.notifyDataSetChanged();
-        }
-        // Doesn't work...
-        if (getIntent().getExtras().getStringArrayList("taskList") != null) {
-            taskList = getIntent().getExtras().getStringArrayList("taskList");
-        }
-        super.onStart();
-    }
+//    @Override
+//    public void onStart() {
+//        // Add task when received from AddTask.java
+//        if(getIntent().getExtras() != null) {
+//            String task = getIntent().getExtras().getString("taskName");
+//            taskList.add(task);
+//            taskAdapter.notifyDataSetChanged();
+//        }
+//        // Doesn't work...
+//        if (getIntent().getExtras().getStringArrayList("taskList") != null) {
+//            taskList = getIntent().getExtras().getStringArrayList("taskList");
+//        }
+//        super.onStart();
+//    }
 
     public void goBack(View view) {
 

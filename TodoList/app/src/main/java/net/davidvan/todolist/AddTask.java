@@ -34,10 +34,10 @@ public class AddTask extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task);
         initTasks();
-        Button next = (Button) findViewById(R.id.task_back_button);
-        setValues();
+        Button next = (Button) findViewById(R.id.task_done_button);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                setValues();
                 Bundle b = new Bundle();
                 b.putString("tasks", memo2);
                 b.putBoolean("alert", setAlert);
@@ -47,7 +47,7 @@ public class AddTask extends Activity {
 //                EditText taskName = (EditText) findViewById(R.id.task_name_edit_text);
 //                String taskNameContents = taskName.getText().toString();
 //                myIntent.putExtra("taskName", taskNameContents);
-                  startActivityForResult(myIntent, 0);
+                  startActivity(in);
             }
 
         });
@@ -56,11 +56,11 @@ public class AddTask extends Activity {
 
     @Override
     public void onStart() {
-        // Add task when received from AddTask.java
-        if(getIntent().getExtras() != null) {
-            ArrayList<String> taskList = getIntent().getExtras().getStringArrayList("taskList");
-            myIntent.putStringArrayListExtra("taskList", taskList);
-        }
+//        // Add task when received from AddTask.java
+//        if(getIntent().getExtras() != null) {
+//            ArrayList<String> taskList = getIntent().getExtras().getStringArrayList("taskList");
+//            myIntent.putStringArrayListExtra("taskList", taskList);
+//        }
         super.onStart();
     }
 
